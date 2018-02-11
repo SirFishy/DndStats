@@ -1,8 +1,21 @@
 <html>
     <head>
-        <title>{{ title }} - Microblog</title>
+        {% if title %}
+        <title>{{ title }} - D&D Stats</title>
+        {% else %}
+        <title>Welcome to D&D Stats!</title>
+        {% endif %}
     </head>
     <body>
-        <h1>Hello, {{ user.username }}!</h1>
+        <h1>Hi, {{ user.username }}!</h1>
+        {% for stat in stats %}
+        <div>
+        	<p>
+        		<b>Stat #: </b> {{loop.index}} <br />
+        		<b>Date: </b>{{ stat.date.displaydate }} <br />
+        		<b>Session: </b>{{ stat.session }} <br />
+        	</p>
+        </div>
+        {% endfor %}
     </body>
 </html>
