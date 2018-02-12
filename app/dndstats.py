@@ -1,6 +1,8 @@
 import flask
 import datetime
+from app.forms import LoginForm
 from config import Config
+
 
 app = flask.Flask(__name__)
 app.config.from_object(Config)
@@ -22,6 +24,10 @@ def index():
     ]
     return flask.render_template('index.html', title='Home', user=user, stats=stats)
 
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return flask.render_template('login.html', title='Sign In', form=form)
 
 if __name__ == '__main__':
     app.run()
