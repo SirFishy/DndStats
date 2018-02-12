@@ -1,7 +1,9 @@
 import flask
 import datetime
+from config import Config
 
 app = flask.Flask(__name__)
+app.config.from_object(Config)
 
 @app.route('/')
 @app.route('/index')
