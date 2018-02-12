@@ -1,0 +1,12 @@
+<head>
+    {% if title %}
+    <title>{{ title }} - D&D Stats</title>
+    {% else %}
+    <title>Welcome to D&D Stats!</title>
+    {% endif %}
+</head>
+<body>
+    <div>D&D Stats: <a href="/index">Home</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+</body>

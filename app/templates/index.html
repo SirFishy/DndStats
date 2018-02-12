@@ -1,21 +1,13 @@
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - D&D Stats</title>
-        {% else %}
-        <title>Welcome to D&D Stats!</title>
-        {% endif %}
-    </head>
-    <body>
-        <h1>Hi, {{ user.username }}!</h1>
-        {% for stat in stats %}
-        <div>
-        	<p>
-        		<b>Stat #: </b> {{loop.index}} <br />
-        		<b>Date: </b>{{ stat.date.displaydate }} <br />
-        		<b>Session: </b>{{ stat.session }} <br />
-        	</p>
-        </div>
-        {% endfor %}
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h1>Hi, {{ user.username }}!</h1>
+    {% for stat in stats %}
+    <div>
+        <p>
+            <b>Stat #: </b> {{loop.index}} <br />
+            <b>Date: </b>{{ stat.date.displaydate }} <br />
+            <b>Session: </b>{{ stat.session }} <br />
+        </p>
+    </div>
+    {% endfor %}
+{% endblock %}
