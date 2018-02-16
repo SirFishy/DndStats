@@ -1,15 +1,18 @@
 import flask
 import datetime
 from app.forms import LoginForm
-from app.models import db
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from config import Config
 
+db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app():
     app = flask.Flask(__name__)
     app.config.from_object(Config)
-    #db.create_all()
-
+    db.init_app(app)
+    migrate.init_app(app, db)
     @app.route('/')
     @app.route('/index')
     def index():
