@@ -8,11 +8,14 @@ from config import Config
 db = SQLAlchemy()
 migrate = Migrate()
 
+import app.models
+
 def create_app():
     app = flask.Flask(__name__)
     app.config.from_object(Config)
     db.init_app(app)
     migrate.init_app(app, db)
+
     @app.route('/')
     @app.route('/index')
     def index():
